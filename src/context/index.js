@@ -1,16 +1,17 @@
 import React, { createContext, useReducer, useContext, useEffect } from 'react'
-import { getPopular, getFiltered } from "../tmdbAPI"
+import { getPopular, getFiltered, getGenreIds } from "../tmdbAPI"
 
 const AppContext = createContext();
 const useAppContext = () => useContext(AppContext)
 
 const initialState = {
+  genres: [],
   filteredMovies: [],
   trendingMovies: [],
   page: 1,
-  primary_release_year: '2010',
+  primary_release_year: '2018',
   vote_average: '8',
-  genreId: '35'
+  genreId: '878'
 }
 
 function reducer(state, action) {
@@ -27,6 +28,14 @@ function reducer(state, action) {
       return { ...state, trendingMovies: action.trendingMovies }
     case 'FILTERED_MOVIES':
       return { ...state, filteredMovies: action.filteredMovies }
+    case 'GENRES':
+      return { ...state, genres: action.genres }
+    case 'NEW_GENRE_ID':
+      return { ...state, genreId: action.genreId }
+    case 'VOTE_AVERAGE_CHANGED':
+      return { ...state, vote_average: action.vote_average }
+    case 'RELEASE_YEAR_CHANGED':
+      return { ...state, primary_release_year: action.primary_release_year }
     default:
       return state;
   }
@@ -37,14 +46,16 @@ function Provider({ children }) {
 
   useEffect(() => {
     getPopular().then(trendingMovies => {
-      console.log({ trendingMovies })
       dispatch({ type: 'TRENDING_MOVIES', trendingMovies })
     })
-    getFiltered().then(filteredMovies => {
-      console.log({ filteredMovies })
+
+    getFiltered({ ...state }).then(filteredMovies => {
       dispatch({ type: 'FILTERED_MOVIES', filteredMovies })
     })
 
+    getGenreIds().then(genres => {
+      dispatch({ type: 'GENRES', genres })
+    })
   }, [])
 
   return (
