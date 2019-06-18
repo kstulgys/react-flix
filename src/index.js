@@ -1,10 +1,10 @@
-import dotenv from 'dotenv'
+import dotenv from "dotenv"
 import React, { useEffect } from "react"
 import ReactDOM from "react-dom"
 import Nav from "./Nav"
 import TrendingMovies from "./trending-movies"
-import FindMovies from './find-movies'
-import { Provider, useAppContext } from './context/index'
+import FindMovies from "./find-movies"
+import { Provider, useAppContext } from "./context/index"
 
 import "bootstrap/dist/css/bootstrap.min.css"
 import "shards-ui/dist/css/shards.min.css"
@@ -29,4 +29,6 @@ const rootElement = document.getElementById("root")
 ReactDOM.render(
   <Provider>
     <App />
-  </Provider>, rootElement)
+  </Provider>,
+  rootElement
+)
