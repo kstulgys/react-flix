@@ -1,7 +1,7 @@
 import dotenv from "dotenv"
 import React, { useEffect } from "react"
 import ReactDOM from "react-dom"
-import Nav from "./Nav"
+import Nav from "./nav-bar"
 import TrendingMovies from "./trending-movies"
 import FindMovies from "./find-movies"
 import { Provider, useAppContext } from "./context/index"
