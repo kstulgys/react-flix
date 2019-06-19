@@ -25,7 +25,7 @@ export default function SearchMoviesInput() {
 
   return (
     <div className="w-100">
-      <form className="col-12 col-lg-4 px-0">
+      <form className="col-12 col-md-12 col-lg-6 px-0">
         <div class="input-group input-group-seamless">
           <div class="input-group-append">
             <div class="input-group-text mr-3">
