@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { FormInput } from "shards-react"
 import { useAppContext } from "../context"
 import { searchMovies } from "../tmdbAPI"
+import { navigate } from "@reach/router"
 
 export default function SearchMoviesInput() {
   const [inputValue, setValue] = useState("")
@@ -14,6 +15,7 @@ export default function SearchMoviesInput() {
   }
 
   function handleChange(e) {
+    navigate('/')
     const { value } = e.target
     search(value)
     setValue(value)
@@ -27,8 +29,8 @@ export default function SearchMoviesInput() {
     <div className="w-100">
       <form className="col-12 col-md-12 col-lg-6 px-0">
         <div class="input-group input-group-seamless">
-          <div class="input-group-append">
-            <div class="input-group-text mr-3">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
               <i class="fa fa-search fa-lg" />
             </div>
           </div>

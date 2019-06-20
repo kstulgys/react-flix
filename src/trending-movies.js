@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useAppContext } from './context'
+import { Link } from "@reach/router"
 
 export default function MovieList() {
   const { state: { trendingMovies }, dispatch } = useAppContext()
@@ -24,7 +25,9 @@ export default function MovieList() {
               style={{ flex: "0 0 auto" }}
             >
               <div className="movie-list__card--image-container rounded">
-                <img src={poster_path} alt="poster" className="rounded" />
+                <Link to={`/${id}`}>
+                  <img src={poster_path} alt="poster" className="rounded" />
+                </Link>
               </div>
               {/* <div className="movie-list__card--content p-4 text-light h-100 w-100 d-flex flex-column align-items-center justify-content-between">
               <div className="d-flex align-items-center justify-content-around w-75">

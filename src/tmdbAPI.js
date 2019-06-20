@@ -60,6 +60,23 @@ export const searchMovies = async (query = "", page = 1) => {
   return formatedData
 }
 
+export const getMovieInfo = async (movieId) => {
+  const { data = {} } = await axios.get(
+    `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+  )
+  console.log({ data })
+  let title = data.title || data.original_title || data.original_name || ""
+
+  const formatedData = {
+    poster_path: `http://image.tmdb.org/t/p/w500/${data.poster_path}`,
+    title,
+    id: data.id,
+    overview: data.overview
+  }
+  return formatedData
+}
+
+
 
 // function formatData(data) {
 //   return data.results.map(movie => {

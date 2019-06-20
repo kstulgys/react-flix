@@ -4,6 +4,7 @@ import SelectGenre from "./select-genre"
 import { useAppContext } from "../../context"
 import { Button } from "shards-react"
 import { getFiltered } from "../../tmdbAPI"
+import { navigate } from "@reach/router"
 
 export default function FindMoviesFields() {
   const { state, dispatch } = useAppContext()
@@ -17,6 +18,7 @@ export default function FindMoviesFields() {
   }
 
   function handleSubmit() {
+    navigate('/').then(() => window.scrollTo(0, 0))
     getFiltered({ ...state }).then(filteredMovies => {
       dispatch({ type: "FILTERED_MOVIES", filteredMovies })
     })
