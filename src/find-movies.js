@@ -1,7 +1,7 @@
 import React from "react"
-import FindMovieFields from "./components/find-movies-fields"
+import FindMovieFields from "./components/find-movies-form"
 import SearchMovieInput from "./components/find-movies-input"
-import FilteredMovies from "./components/filtered-movies"
+import FilteredMovies from "./components/found-movies-grid"
 
 
 

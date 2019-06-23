@@ -45,8 +45,7 @@ export const getGenreIds = async () => {
 
 export const searchMovies = async (query = "", page = 1) => {
   const { data = {} } = await axios.get(
-    `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${query}&page=${page}&include_adult=false`
-  )
+    `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${query}&page=${page}&include_adult=false`)
 
   const formatedData = data.results.map(movie => {
     let title = movie.original_title || movie.original_name || movie.title || ""
@@ -78,16 +77,16 @@ export const getMovieInfo = async (movieId) => {
 
 
 
-// function formatData(data) {
-//   return data.results.map(movie => {
-//     let title = movie.original_title || movie.original_name || movie.title || ""
-//     return {
-//       poster_path: `http://image.tmdb.org/t/p/w400/${movie.poster_path}`,
-//       title,
-//       id: movie.id
-//     }
-//   })
-// }
+function formatData(data, imageWidth) {
+  return data.results.map(movie => {
+    let title = movie.title || movie.original_title || movie.original_name || ""
+    return {
+      poster_path: `http://image.tmdb.org/t/p/w${imageWidth}/${movie.poster_path}`,
+      title,
+      id: movie.id
+    }
+  })
+}
 
 
 

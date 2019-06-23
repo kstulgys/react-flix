@@ -1,27 +1,27 @@
-import React, { useState } from "react"
-import Slider from "./slider"
-import SelectGenre from "./select-genre"
-import { useAppContext } from "../../context"
-import { Button } from "shards-react"
-import { getFiltered } from "../../tmdbAPI"
-import { navigate } from "@reach/router"
+import React, { useState } from "react";
+import Slider from "./slider";
+import SelectGenre from "./select-genre";
+import { useAppContext } from "../../context";
+import { Button } from "shards-react";
+import { getFiltered } from "../../tmdbAPI";
+import { navigate } from "@reach/router";
 
 export default function FindMoviesFields() {
-  const { state, dispatch } = useAppContext()
+  const { state, dispatch } = useAppContext();
 
   function handleVoteChange(value) {
-    dispatch({ type: "VOTE_AVERAGE_CHANGED", vote_average: value })
+    dispatch({ type: "VOTE_AVERAGE_CHANGED", vote_average: value });
   }
 
   function handleReleaseYearChange(value) {
-    dispatch({ type: "RELEASE_YEAR_CHANGED", primary_release_year: value })
+    dispatch({ type: "RELEASE_YEAR_CHANGED", primary_release_year: value });
   }
 
   function handleSubmit() {
-    navigate('/').then(() => window.scrollTo(0, 0))
+    navigate("/").then(() => window.scrollTo(0, 0));
     getFiltered({ ...state }).then(filteredMovies => {
-      dispatch({ type: "FILTERED_MOVIES", filteredMovies })
-    })
+      dispatch({ type: "FILTERED_MOVIES", filteredMovies });
+    });
   }
 
   return (
@@ -58,5 +58,5 @@ export default function FindMoviesFields() {
         <h5 className="m-0 text-light font-weight-bold">Search</h5>
       </Button>
     </div>
-  )
+  );
 }
