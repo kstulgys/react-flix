@@ -1,19 +1,19 @@
-import dotenv from "dotenv"
-import React, { useEffect } from "react"
-import ReactDOM from "react-dom"
-import Nav from "./components/nav-bar"
-import TrendingMovies from "./trending-movies"
-import FindMovies from "./find-movies"
-import { Provider, useAppContext } from "./context/index"
+import dotenv from "dotenv";
+import React, { useEffect, lazy } from "react";
+import ReactDOM from "react-dom";
+import Nav from "./components/nav-bar";
+import TrendingMovies from "./trending-movies";
+import FindMovies from "./find-movies";
+import { Provider, useAppContext } from "./context/index";
 
-import "bootstrap/dist/css/bootstrap.min.css"
-import "shards-ui/dist/css/shards.min.css"
-import "./styles.css"
-dotenv.config()
+import "bootstrap/dist/css/bootstrap.min.css";
+import "shards-ui/dist/css/shards.min.css";
+import "./styles.css";
+dotenv.config();
 
 function App() {
-  const { state } = useAppContext()
-  console.log({ state })
+  const { state } = useAppContext();
+  console.log({ state });
   return (
     <div className="bg-light" style={{ minHeight: "100vh" }}>
       <Nav />
@@ -22,13 +22,13 @@ function App() {
         <FindMovies />
       </div>
     </div>
-  )
+  );
 }
 
-const rootElement = document.getElementById("root")
+const rootElement = document.getElementById("root");
 ReactDOM.render(
   <Provider>
     <App />
   </Provider>,
   rootElement
-)
+);

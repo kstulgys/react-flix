@@ -45,9 +45,9 @@ function Provider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   async function fetchInitialData() {
-    await getPopular().then(trendingMovies => {
-      dispatch({ type: "TRENDING_MOVIES", trendingMovies });
-    });
+    // await getPopular().then(trendingMovies => {
+    //   dispatch({ type: "TRENDING_MOVIES", trendingMovies });
+    // });
     await getFiltered({ ...state }).then(filteredMovies => {
       dispatch({ type: "FILTERED_MOVIES", filteredMovies });
     });
